@@ -107,4 +107,4 @@ case "$arch" in
         ;;
 esac
 
-tar -czf "$tarName" "$rootfs"
+tar -C "$rootfs" -czf "$tarName" .
