@@ -85,7 +85,7 @@ SocksPort 9060
 ControlPort 9061
 '
 
-chroot $rootfs /bin/bash -c "apt-get update && apt-get install -y openjdk-21-jre-headless --fix-missing && apt-get install -y tor && apt-get autoremove --purge -y && apt-get clean && apt-get autoclean && echo '$torrc' > /etc/tor/torrc"
+chroot $rootfs /bin/bash -c "apt-get update && apt-get install -y openjdk-21-jre-headless --fix-missing && apt-get install -y tor && apt-get autoremove --purge -y && apt-get clean && apt-get autoclean && echo '$torrc' > /etc/tor/torrc && sudo rm -rf /var/lib/apt/lists/*"
 
 sudo umount "$rootfs/proc"
 sudo umount "$rootfs/sys"
