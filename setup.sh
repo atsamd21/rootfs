@@ -49,6 +49,7 @@ EOF
 
 curl -LO "${baseUrl}/SHA256SUMS"
 curl -LO "${baseUrl}/SHA256SUMS.gpg"
+curl -LO "${baseUrl}/ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz"
 
 echo "$ubuntuPublicKey" | gpg \
   --no-default-keyring \
@@ -59,10 +60,6 @@ gpg --no-default-keyring --keyring ./tempkey.gpg \
     --verify SHA256SUMS.gpg SHA256SUMS
 
 output=$(sha256sum --check SHA256SUMS 2>&1)
-
-echo "$output"
-
-curl -LO "${baseUrl}/ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz"
 
 if [[ "$output" != *"ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz: OK"* ]]; then
     echo "Failed to verify ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz"
