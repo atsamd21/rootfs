@@ -62,7 +62,7 @@ output=$(sha256sum --check SHA256SUMS 2>&1)
 
 curl -LO "${baseUrl}/ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz"
 
-if $output != *"ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz: OK"*; then
+if [[ "$output" != *"ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz: OK"* ]]; then
     echo "Failed to verify ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz"
     exit 1
 fi
