@@ -60,6 +60,8 @@ gpg --no-default-keyring --keyring ./tempkey.gpg \
 
 output=$(sha256sum --check SHA256SUMS 2>&1)
 
+echo "$output"
+
 curl -LO "${baseUrl}/ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz"
 
 if [[ "$output" != *"ubuntu-base-${ubuntuVersion}-base-${arch}.tar.gz: OK"* ]]; then
